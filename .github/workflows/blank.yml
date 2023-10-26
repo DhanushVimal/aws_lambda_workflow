@@ -21,7 +21,10 @@ jobs:
           aws-region: us-east-1 # Change to your desired AWS region
       - name: List files in working directory
         run: ls -R ${{ github.workspace }}
-        
+
+      - name: Zip code
+        run: |
+          zip -r lambda_code.zip sample.py
       - name: Deploy to Lambda
         run: |
           aws lambda update-function-code --function-name TestLambdaFun --zip-file fileb://lambda_code.zip
