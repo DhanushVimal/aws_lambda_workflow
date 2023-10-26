@@ -1,7 +1,13 @@
 import json
 
 def lambda_handler(event, context):
-    return {
+    # Retrieve a message from the event object if provided
+    message = event.get('message', 'Hello from AWS Lambda!')
+
+    response = {
         'statusCode': 200,
-        'body': json.dumps('Hello from AWS Lambda!')
+        'body': json.dumps(message)
     }
+
+    return response
+
